@@ -1,7 +1,7 @@
 # Osmosis price feed
 
-- Read all Osmosis token swaps using hosted TheGraph API.
-- Create a CSV file with swaps
+- Create ATOM/OSMO price candles in [analyse.ipynb](hackatom_2022/analyse.ipynb) and save as Parquet
+- Read all Osmosis token swaps using hosted TheGraph API in [store_price.py](hackatom_2022/store_price.py) to CSV
 
 # Install
 
