@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600;700&display=swap");
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+    color: #fff;
+  font-family: Inter, ui-sans-serif, system-ui;
+    background: #170f34;
+    font-size: 20px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+    font-size: 110px;
+    -webkit-text-fill-color: transparent;
+    background-image: -webkit-gradient(linear,left bottom,left top,from(#e1c4ff),to(#fbf5ff));
+    -webkit-background-clip: text;
+}
+
+.vault {
+    display: flex;
+    flex-direction: row;
+    max-width: 600px;
+    padding: 25px;
+    border-radius: 16px;
+    background-color: #221551;
+    -webkit-transition: .2s;
+    transition: .2s;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 60px;
+}
+
+.vault h3 {
+    margin-top: 0;
+}
+
+.vault .left {
+    width: 80%;
+}
+
+.vault .right {
+
+}
+
+.btn {
+    background: #2D1F60;
+    display: block;
+    line-height: 1rem;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+    width: 100%;
+}

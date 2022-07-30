@@ -1,0 +1,7 @@
+{
+  "out": "./docs",
+  "name": "counter-dapp",
+  "theme": "markdown",
+  "readme": "none",
+  "tsconfig": "./tsconfig.bundle.json"
+}
