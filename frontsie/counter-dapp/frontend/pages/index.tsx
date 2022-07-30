@@ -19,7 +19,11 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1 className={styles.title}>Algosm</h1>
 
-        <p className="lead">Sustainable profits on Osmosis through algorithmic trading</p>
+        <p className="lead">
+            Sustainable profits on Osmosis with non-custodial active trading strategies
+        </p>
+
+          <h2>Strategies</h2>
 
           <div className="vault">
 
@@ -33,11 +37,11 @@ const Home: NextPage = () => {
               </div>
 
               <div className="right">
-                  <a className="btn">
+                  <a className="btn" href="/strategy">
                       Invest
                   </a>
 
-                  <a className="btn">
+                  <a className="btn" href="/strategy">
                       Performance
                   </a>
               </div>
@@ -45,16 +49,16 @@ const Home: NextPage = () => {
 
           <div className="vault">
               <div className="left">
-                  <h3>Osmosis ecosystem momentum strategy</h3>
+                  <h3>Ecosystem momentum</h3>
                   <p>Trades: All Osmosis pools</p>
                   <p>Profits kept in: DAI</p>
                   <p>Description: Buys fastest raising Osmosis tokens.</p>
               </div>
 
               <div className="right">
-                  <a className="btn">
+                  <p className="status">
                       Soon
-                  </a>
+                  </p>
               </div>
           </div>
 

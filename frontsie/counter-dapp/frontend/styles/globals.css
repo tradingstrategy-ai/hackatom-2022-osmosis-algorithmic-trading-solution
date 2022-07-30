@@ -46,11 +46,11 @@ h1 {
 }
 
 .vault .left {
-    width: 80%;
+    width: 70%;
 }
 
 .vault .right {
-
+    width: 30%;
 }
 
 .btn {
@@ -65,4 +65,17 @@ h1 {
     margin-bottom: 25px;
     text-align: center;
     width: 100%;
+}
+
+.btn:hover {
+    opacity: 0.5;
+}
+
+.status {
+	margin-top: 8px;
+	color: #8471ce;
+	font-size: 12px;
+	font-weight: 400;
+	text-transform: uppercase;
+    text-align: center;
 }
