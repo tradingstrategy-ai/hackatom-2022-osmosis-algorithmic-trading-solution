@@ -8,6 +8,12 @@ authors = ["Mikko Ohtamaa <mikko@opensourcehacker.com>"]
 python = "^3.9"
 requests = "^2.28.1"
 web3-ethereum-defi = "^0.10"
+kaleido = "0.2.1"
+jupyter = "^1.0.0"
+pandas = "^1.4.3"
+plotly = "^5.9.0"
+matplotlib = "^3.5.2"
+pyarrow = "^8.0.0"
 
 [tool.poetry.dev-dependencies]
 ipdb = "^0.13.9"
