@@ -29,11 +29,15 @@ const Home: NextPage = () => {
 
               <div className="left">
                   <h3>ATOM/OSMO mean reversion</h3>
-                  <p>Trades: ATOM/OSMO pair</p>
-                  <p>Profits kept in: OSMO</p>
-                  <p>Current returns: 0%</p>
-                  <p>Historical returns: 12%</p>
-                  <p>Description: Low risk strategy that switches between ATOM and OSMO depending on which token is enjoying momentum.</p>
+                  <p>Trades: <span className="value">ATOM/OSMO pair</span></p>
+                  <p>Profits kept in: <span className="value">OSMO</span></p>
+                  <p>Current returns: <span className="value">0%</span></p>
+                  <p>Historical APY: <span className="value">12%</span></p>
+                  <p>Description: <br/>
+                      <span className="value">
+                          Low risk strategy that switches between ATOM and OSMO depending on which token is enjoying momentum.
+                      </span>
+                  </p>
               </div>
 
               <div className="right">

@@ -31,8 +31,36 @@ export const getWalletStatus = async() => {
     const client = await getSigningClient();
     const address = await getAddress();
     const walletBalance = await client.getBalance(address, "uosmo");
+    const contractAddress = await getContractAddr();
     return {
         address,
         walletBalance,
+        contractAddress,
     }
+}
+
+export const deposit = async(contractAddress: string, amount: string) => {
+
+    if(!amount) {
+        throw new Error("Amount is bad");
+    }
+
+    const client = await getSigningClient();
+    const address = await getAddress();
+    const denom = "uosmo";
+    const sendResult = await client.sendTokens(
+        address,
+        contractAddress,
+        [
+            {
+                denom: denom,
+                amount: amount,
+            },
+        ],
+        {
+            amount: [{ denom: "ousmo", amount: "500" }],
+            gas: "200000",
+        },
+    );
+    return sendResult;
 }

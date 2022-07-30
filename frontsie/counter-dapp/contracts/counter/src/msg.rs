@@ -25,3 +25,11 @@ pub enum QueryMsg {
 pub struct GetCountResponse {
     pub count: i32,
 }
+
+
+// We define a custom struct for each query response
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+pub struct GetVaultBalances {
+    pub token0: i32,
+    pub token1: i32,
+}

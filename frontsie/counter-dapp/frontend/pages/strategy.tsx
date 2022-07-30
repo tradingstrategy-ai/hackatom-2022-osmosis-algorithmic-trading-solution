@@ -1,11 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import {useRef, useState} from "react";
 import { useCount } from "../api/counter";
 import styles from "../styles/Home.module.css";
-import {getWalletStatus} from "../api/strategy";
+import {deposit, getWalletStatus} from "../api/strategy";
 
 const Strategy: NextPage = () => {
+
+    const inputRef = useRef(null);
 
     const { count, error, increase } = useCount();
 
@@ -15,17 +17,59 @@ const Strategy: NextPage = () => {
     const [currentBalance, setBalance] = useState(false);
     const [currentInvesment, setInvestment] = useState(false);
     const [currentAddress, setAddress] = useState("");
+    const [contractAddress, setContractAddress] = useState("");
     const [currentWalletBalance, setWalletBalance] = useState("");
 
+    const [investError, setInvestError] = useState("");
+    const [investResult, setInvestResult] = useState("");
+
+    const [busy, setBusy] = useState(false);
 
     async function onConnect() {
         console.log("Connecting wallet");
         const walletStatus = await getWalletStatus();
         setAddress(walletStatus.address);
-        setWalletBalance(walletStatus.walletBalance.amount);
+        setContractAddress(walletStatus.contractAddress);
+        const happyBalance = parseFloat(walletStatus.walletBalance.amount) / 1_000_000;
+        setWalletBalance(happyBalance.toLocaleString("en", { minimumFractionDigits: 3, maximumFractionDigits: 3 }) + " OSMO");
         console.log("Wallet balance is", walletStatus.walletBalance);
         setConnected(true);
     }
+
+    async function onDeposit() {
+
+        setBusy(true);
+
+        setInvestResult("");
+
+        let val = inputRef.current.value;
+        if(!val) {
+            setInvestError("Enter OSMO amount to invest");
+            return;
+        }
+
+        val = parseFloat(val) * 1_000_000;
+        val = parseInt(val).toString();
+        console.log("Depositing", contractAddress, val, "uosmo");
+        try {
+            const result = await deposit(contractAddress, val);
+            console.log("TX result", result);
+            if(result.code === 0) {
+                setInvestResult("Deposit complete")
+            }
+        } catch(e) {
+            console.error(e);
+            setInvestError(e.toString());
+        }
+
+
+        setBusy(false);
+    }
+
+      const handleChange = event => {
+        setMessage(event.target.value);
+        console.log('value is:', event.target.value);
+      };
 
   return (
     <div className={styles.container}>
@@ -37,44 +81,68 @@ const Strategy: NextPage = () => {
       <main className={styles.main}>
         <h1 className="heading-strategy">ATOM/OSMO mean reversion strategy</h1>
 
-          <div className="vault">
+          <div className="vault vault-wide">
               <div className="left">
 
-                  <label></label>
+                  <label>Amount to invest (OSMO):</label>
+
+                  {investError && <p className="error">
+                      {investError}
+                  </p>}
+
+                  {investResult && <p className="success">
+                      {investResult}
+                  </p>}
+
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    id="value"
+                    name="value"
+                    className="value"
+                    disabled={!connected}
+                  />
 
                   <p>
-                      Your account: {connected ? currentAddress : "-"}
+                      Your account: <br/><span className="value value-address">{connected ? currentAddress : "-"}</span>
                   </p>
 
-
                   <p>
-                      Currently investment: 0 OSMO
+                      Strategy vault address: <br/><span className="value value-address">{connected ? contractAddress : "-"}</span>
                   </p>
 
                   <p>
-                      Your profit: {connected ? "" : ""}
+                      Current investment: <span className="value">{connected ? "0 OSMO" : "-"}</span>
                   </p>
 
                   <p>
-                      In wallet: {connected ? currentWalletBalance : "-"}
+                      Lifetime profit: <span className="value">{connected ? "0%" : "-"}</span>
+                  </p>
+
+                  <p>
+                      Wallet balance: <span className="value">{connected ? currentWalletBalance : "-"}</span>
                   </p>
 
               </div>
 
               <div className="right">
 
-                  <button className="btn" disabled={connected} onClick={onConnect}>
+                  <button className="btn" disabled={connected || busy} onClick={onConnect}>
                       Connect wallet
                   </button>
 
-                  <button className="btn" disabled={!connected}>
+                  <button className="btn" disabled={!connected || busy} onClick={onDeposit}>
                       Deposit OSMO
                   </button>
 
-                  <button className="btn" disabled={!connected}>
+                  <button className="btn" disabled={!connected || busy}>
                       Withdraw
                       tokens
                   </button>
+
+                  <div className="loader-wrapper">
+                    {busy && <span className="loader">..</span>}
+                  </div>
               </div>
           </div>
 
