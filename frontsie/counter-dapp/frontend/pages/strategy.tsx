@@ -131,7 +131,11 @@ const Strategy: NextPage = () => {
                   </p>
 
                   <p>
-                      Current investment: <span className="value">{connected ? currentVaultOSMOBalance : "-"}</span>
+                      Your investment: <span className="value">{connected ? currentVaultOSMOBalance : "-"}</span>
+                  </p>
+
+                  <p>
+                      Vault TVL: <span className="value">{connected ? currentVaultOSMOBalance : "-"}</span>
                   </p>
 
                   <p>
@@ -141,6 +145,10 @@ const Strategy: NextPage = () => {
                   <p>
                       Wallet balance: <span className="value">{connected ? currentWalletBalance : "-"}</span>
                   </p>
+
+                  {!connected && <p class="connect-info">
+                      Connect your Keplr wallet to invest and display current profit.
+                  </p>}
 
               </div>
 
@@ -165,17 +173,70 @@ const Strategy: NextPage = () => {
               </div>
           </div>
 
-          <h2>Current performance</h2>
+          <div className="blurpsie">
+              <h2>Current performance</h2>
 
-          <p>Not enough data</p>
+              <p>
+                 <strong>Not enough data</strong>.
+              </p>
+              <p>
+                 This strategy has not been running for enough days to gather any meaningful live trading performance analytics.
+                 Strategies may do trades weekly or monthly and it will take several rebalance cycles to refelct the true performance.
+              </p>
+          </div>
 
-          <h2>Backtested performance</h2>
+          <div className="blurpsie">
+              <h2>Backtested performance</h2>
 
-          <p>Not enough data</p>
+              <p>Backtesting has been performed on historical Osmosis trading data.</p>
 
-          <h2>Strategy source code</h2>
+              <h3>Portfolio benchmark</h3>
 
-          <p>Not enough data</p>
+              <p>Strategy performance benchmarked agaisnt buy-and-hold ATOM and buy-and-hold OSMO.</p>
+
+              <img src="/benchmark.png" />
+
+          </div>
+
+          <div className="blurpsie">
+              <h2>Strategy execution and source code</h2>
+
+              <h3>Execution status</h3>
+
+              <div class="info-pane">
+                  <table>
+                      <tr>
+                          <th>Oracles running</th>
+                          <td>1</td>
+                      </tr>
+
+                      <tr>
+                          <th>Oracles registered</th>
+                          <td>1</td>
+                      </tr>
+
+                      <tr>
+                          <th>Last trade</th>
+                          <td>Not available yet</td>
+                      </tr>
+
+                      <tr>
+                          <th>Vault smart contract</th>
+                          <td>osmo17p9rzwnnfxcjp32un9ug7yhhzgtkhvl9jfksztgw5uh69wac2pgs5yczr8</td>
+                      </tr>
+
+                      <tr>
+                          <th>Source code IPFS</th>
+                          <td>Not available yet</td>
+                      </tr>
+                  </table>
+              </div>
+
+              <h3>Source code</h3>
+
+              <p>This source code is executed by all strategy oracles.</p>
+
+          </div>
 
       </main>
     </div>
