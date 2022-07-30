@@ -17,8 +17,9 @@ export const increase = async () => {
   );
 };
 
-export const useCount = () => {
-  const { data, error, mutate } = useSWR("/counter/count", getCount);
+
+export const useVaultBalances = () => {
+  const { data, error, mutate } = useSWR("/counter/vault-balances", getCount);
   return {
     count: data?.count,
     error,
@@ -32,10 +33,12 @@ export const getWalletStatus = async() => {
     const address = await getAddress();
     const walletBalance = await client.getBalance(address, "uosmo");
     const contractAddress = await getContractAddr();
+    const vaultBalances = await client.queryContractSmart(getContractAddr(), { get_vault_balances: {} });
     return {
         address,
         walletBalance,
         contractAddress,
+        vaultBalances
     }
 }
 

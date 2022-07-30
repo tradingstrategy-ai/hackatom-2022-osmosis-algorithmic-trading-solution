@@ -19,21 +19,37 @@ const Strategy: NextPage = () => {
     const [currentAddress, setAddress] = useState("");
     const [contractAddress, setContractAddress] = useState("");
     const [currentWalletBalance, setWalletBalance] = useState("");
+    const [currentVaultOSMOBalance, setVaultOSMOBalance] = useState("");
 
     const [investError, setInvestError] = useState("");
     const [investResult, setInvestResult] = useState("");
 
     const [busy, setBusy] = useState(false);
 
-    async function onConnect() {
-        console.log("Connecting wallet");
+    // After we have good wallet connection,
+    // refresh UI
+    async function updateUI() {
         const walletStatus = await getWalletStatus();
         setAddress(walletStatus.address);
         setContractAddress(walletStatus.contractAddress);
-        const happyBalance = parseFloat(walletStatus.walletBalance.amount) / 1_000_000;
+        let happyBalance = parseFloat(walletStatus.walletBalance.amount) / 1_000_000;
         setWalletBalance(happyBalance.toLocaleString("en", { minimumFractionDigits: 3, maximumFractionDigits: 3 }) + " OSMO");
         console.log("Wallet balance is", walletStatus.walletBalance);
+        console.log("Vault balances are", walletStatus.vaultBalances);
+
+        if(walletStatus.vaultBalances.balances.length > 0) {
+            happyBalance = parseFloat(walletStatus.vaultBalances.balances[0].amount) / 1_000_000;
+            setVaultOSMOBalance(happyBalance.toLocaleString("en", { minimumFractionDigits: 3, maximumFractionDigits: 3 }) + " OSMO");
+        } else {
+            setVaultOSMOBalance("0 OSMO");
+        }
+
+    }
+
+    async function onConnect() {
+        console.log("Connecting wallet");
         setConnected(true);
+        updateUI();
     }
 
     async function onDeposit() {
@@ -62,6 +78,9 @@ const Strategy: NextPage = () => {
             setInvestError(e.toString());
         }
 
+        updateUI();
+
+        inputRef.current.value = "";
 
         setBusy(false);
     }
@@ -112,7 +131,7 @@ const Strategy: NextPage = () => {
                   </p>
 
                   <p>
-                      Current investment: <span className="value">{connected ? "0 OSMO" : "-"}</span>
+                      Current investment: <span className="value">{connected ? currentVaultOSMOBalance : "-"}</span>
                   </p>
 
                   <p>

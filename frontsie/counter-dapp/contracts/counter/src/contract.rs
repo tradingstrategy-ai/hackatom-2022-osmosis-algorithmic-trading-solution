@@ -4,7 +4,7 @@ use cosmwasm_std::{to_binary, Binary, Deps, DepsMut, Env, MessageInfo, Response,
 use cw2::set_contract_version;
 
 use crate::error::ContractError;
-use crate::msg::{ExecuteMsg, GetCountResponse, InstantiateMsg, QueryMsg};
+use crate::msg::{ExecuteMsg, GetCountResponse, InstantiateMsg, QueryMsg, GetVaultBalancesResponse};
 use crate::state::{State, STATE};
 
 // version info for migration info
@@ -68,12 +68,25 @@ pub fn try_reset(deps: DepsMut, info: MessageInfo, count: i32) -> Result<Respons
 pub fn query(deps: Deps, _env: Env, msg: QueryMsg) -> StdResult<Binary> {
     match msg {
         QueryMsg::GetCount {} => to_binary(&query_count(deps)?),
+        QueryMsg::GetVaultBalances {} => to_binary(&query_balances(_env, deps)?),
     }
 }
 
 fn query_count(deps: Deps) -> StdResult<GetCountResponse> {
     let state = STATE.load(deps.storage)?;
     Ok(GetCountResponse { count: state.count })
+}
+
+// beaker console
+// beaker[local] ◇ await contract.counter.query({ get_vault_balances: {} });
+// { balances: [] }
+fn query_balances(_env: Env, deps: Deps) -> StdResult<GetVaultBalancesResponse> {
+    // let state = STATE.load(deps.storage)?;
+    // https://github.com/AndonMitev/new-terra/blob/a79f48a68dbcf2e700d62d1d7671f6b88be178e9/htlc/src/contract.rs#L63
+    // https://github.com/PeggyJV/ocular/blob/26e6aecc832189782117a79b1e48aa22d6a3ccbc/ocular/tests/airdrop.rs
+    // https://docs.rs/cosmwasm-std/0.14.0/cosmwasm_std/enum.BankMsg.html
+    let all_balances = deps.querier.query_all_balances(_env.contract.address)?;
+    Ok(GetVaultBalancesResponse { balances: all_balances })
 }
 
 #[cfg(test)]
