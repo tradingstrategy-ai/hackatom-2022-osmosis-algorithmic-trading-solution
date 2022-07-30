@@ -9,8 +9,22 @@ https://thegraph.com/docs/en/querying/graphql-api/#filtering
 """
 import csv
 import sys
+import re
+
 import requests
 import datetime
+
+
+def clean_amount(s) -> int:
+    """Handle various error cases with TheGraph data.
+    93602571301935242gamm/p
+    """
+    if s is None:
+        return -1
+    s = re.search(r'\d+',s).group()
+    price = int(s)
+    return price
+
 
 # This was grabbed from aavescan
 example_query = """
@@ -61,7 +75,7 @@ url = "https://api.thegraph.com/subgraphs/name/miohtama/hackatom-2022"
 start = datetime.datetime(2021, 12, 25, tzinfo=datetime.timezone.utc)
 # start = datetime.datetime(2020, 7, 13, tzinfo=datetime.timezone.utc)
 end = datetime.datetime(2022, 7, 1, tzinfo=datetime.timezone.utc)
-delta = datetime.timedelta(hours=1)
+delta = datetime.timedelta(hours=0.5)
 
 # Max number of swaps to be fetch for one hour
 max_rows = 1000
@@ -106,8 +120,8 @@ while cursor < end:
         o["pool_id"] = int(s["poolId"])
         o["token_in"] = s["tokenIn"]["denom"]
         o["token_out"] = s["tokenOut"]["denom"]
-        o["token_in_amount"] = int(s["tokenIn"]["amount"])
-        o["token_out_amount"] = int(s["tokenOut"]["amount"])
+        o["token_in_amount"] = clean_amount(s["tokenIn"]["amount"])
+        o["token_out_amount"] = clean_amount(s["tokenOut"]["amount"])
         out_swaps.append(o)
 
     out_swaps = sorted(out_swaps, key=lambda s:s["timestamp"])
