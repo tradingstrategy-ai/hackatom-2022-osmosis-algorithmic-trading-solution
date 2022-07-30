@@ -7,7 +7,7 @@ https://thegraph.com/hosted-service/subgraph/miohtama/hackatom-2022
 
 https://thegraph.com/docs/en/querying/graphql-api/#filtering
 """
-
+import csv
 import sys
 import requests
 import datetime
@@ -33,7 +33,10 @@ example_query = """
 # For each timestamp we add one query item
 TEMPLATE = """
 {{
-        tokenSwaps(first: {max_rows}, where: {{ timestamp_gte: {timestamp_start}, timestamp_lt: {timestamp_end} }}) {{
+        tokenSwaps(
+            first: {max_rows}, 
+            where: {{ timestamp_gte: {timestamp_start}, timestamp_lt: {timestamp_end} }}
+            ) {{
             id
             blockNumber
             timestamp
@@ -55,17 +58,18 @@ url = "https://api.thegraph.com/subgraphs/name/miohtama/hackatom-2022"
 
 # Looks like no earlier data available
 # GMT: Saturday, December 25, 2021 12:12:25 AM
-start = datetime.datetime(2021, 12, 24, tzinfo=datetime.timezone.utc)
+start = datetime.datetime(2021, 12, 25, tzinfo=datetime.timezone.utc)
 # start = datetime.datetime(2020, 7, 13, tzinfo=datetime.timezone.utc)
 end = datetime.datetime(2022, 7, 1, tzinfo=datetime.timezone.utc)
 delta = datetime.timedelta(hours=1)
-batch_size = 5  # How many days we do in one GraphQL query
 
 # Max number of swaps to be fetch for one hour
 max_rows = 1000
 
-csv = open("swaps.csv", "wt")
-print("block_number,timestamp,pool_id,token_in,token_out,token_in_amount,token_out_amount", file=csv)
+columns = "block_number,timestamp,pool_id,token_in,token_out,token_in_amount,token_out_amount".split(",")
+out = open("swaps.csv", "wt")
+writer = csv.DictWriter(out, fieldnames=columns, delimiter=",")
+writer.writeheader()
 
 # Iterate over data day by day
 cursor = start
@@ -92,15 +96,31 @@ while cursor < end:
 
     data = out["data"]
     swaps = data["tokenSwaps"]
-    for s in swaps:
-        s["timestamp"] = int(s["timestamp"])
-    swaps = sorted(swaps, key=lambda s:s["timestamp"])
 
-    if swaps:
-        first_swap = datetime.datetime.utcfromtimestamp(swaps[0]["timestamp"])
-        last_swap = datetime.datetime.utcfromtimestamp(swaps[-1]["timestamp"])
-        print(f"Timestamp {cursor}: {len(swaps)} swaps, first at:{first_swap}, last at: {last_swap}")
-        import ipdb ; ipdb.set_trace()
+    out_swaps = []
+
+    for s in swaps:
+        o = {}
+        o["timestamp"] = int(s["timestamp"])
+        o["block_number"] = int(s["blockNumber"])
+        o["pool_id"] = int(s["poolId"])
+        o["token_in"] = s["tokenIn"]["denom"]
+        o["token_out"] = s["tokenOut"]["denom"]
+        o["token_in_amount"] = int(s["tokenIn"]["amount"])
+        o["token_out_amount"] = int(s["tokenOut"]["amount"])
+        out_swaps.append(o)
+
+    out_swaps = sorted(out_swaps, key=lambda s:s["timestamp"])
+
+    if out_swaps:
+        first_swap = datetime.datetime.utcfromtimestamp(out_swaps[0]["timestamp"])
+        last_swap = datetime.datetime.utcfromtimestamp(out_swaps[-1]["timestamp"])
+        print(f"Timestamp {cursor}: {len(out_swaps)} swaps, first at:{first_swap}, last at: {last_swap}")
+
+        writer.writerows(out_swaps)
+
+        if len(out_swaps) == max_rows:
+            print("Too many rows - decrease delta or increase max_rows limit")
     else:
         print(f"Timestamp {cursor}: {len(swaps)} swaps")
 
