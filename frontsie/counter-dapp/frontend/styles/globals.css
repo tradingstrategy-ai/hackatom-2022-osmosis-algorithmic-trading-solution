@@ -21,6 +21,11 @@ a {
   box-sizing: border-box;
 }
 
+.logo {
+    height: 100px;
+    margin-right: 20px;
+}
+
 h1 {
     font-size: 110px;
     -webkit-text-fill-color: transparent;

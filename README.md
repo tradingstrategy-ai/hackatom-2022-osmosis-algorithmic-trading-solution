@@ -1,4 +1,15 @@
-# Osmosis price feed
+
+<p align="center">
+  <img width=100 height=100 src="./algosm-logo.png">
+  <h1 align="center">Algosm</h1>
+</p>
+
+
+Algosm is a hackathon project for HackAtom Seoul 2022. Algosm does
+non-custodial active trading strategies on Osmosis DEX using CosmWasm smart contract
+and offchain trading algorithm oracles.
+
+## Contents 
 
 - Create ATOM/OSMO price candles in [analyse.ipynb](hackatom_2022/analyse.ipynb) and save as Parquet
 - Read all Osmosis token swaps using hosted TheGraph API in [store_price.py](hackatom_2022/store_price.py) to CSV

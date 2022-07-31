@@ -18,7 +18,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Algosm</h1>
+        <h1 className={styles.title}>
+            <img className="logo" src="/algosm-logo.png" />
+            Algosm
+        </h1>
 
         <p className="lead">
             Automated non-custodial active trading strategies for Osmosis.
