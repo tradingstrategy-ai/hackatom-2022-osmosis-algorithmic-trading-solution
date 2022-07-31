@@ -335,21 +335,16 @@ const Strategy: NextPage = () => {
                       <tbody>
                           <tr>
                               <th>Backtesting period</th>
-                              <td>2021-12-25 - 2022-07-29</td>
+                              <td>2021-12-25 - 2022-04-29 (68 days)</td>
                           </tr>
 
                           <tr>
-                              <th>Annualised profit</th>
-                              <td>10%</td>
+                              <th>Annualised return</th>
+                              <td>68% (in OSMO)</td>
                           </tr>
 
                           <tr>
-                              <th>Maximum drawdown</th>
-                              <td>Not available yet</td>
-                          </tr>
-
-                          <tr>
-                              <th>Trade win rate</th>
+                              <th>Trade g rate</th>
                               <td>100%</td>
                           </tr>
                       </tbody>

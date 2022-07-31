@@ -47,7 +47,7 @@ This will generate 600 MB `swaps.csv`.
 
 ### Create and examine OHLCV candle data
 
-Use [OHLCV Jupyter Notebook](hackatom_2022/analyse.ipynb).
+Use [Osmosis market data feed generation Jupyter Notebook](hackatom_2022/analyse.ipynb).
 
 ### Run backtests 
 
