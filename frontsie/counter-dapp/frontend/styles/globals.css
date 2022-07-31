@@ -162,6 +162,10 @@ label {
     color: #888;
 }
 
+.img-benchmark {
+    width: 100%;
+}
+
 /* https://projects.lukehaas.me/css-loaders */
 
 .loader,
