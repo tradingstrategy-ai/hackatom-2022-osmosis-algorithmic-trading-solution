@@ -87,7 +87,11 @@ yarn dev
 - Teddy Knox
 - Mykhailo Donchenko
 
-## Hackathon story
+# License 
+
+MIT
+
+# Hackathon story
 
 The idea grew and morphed with mostly completion, but also stretch goals partially complete.
 
