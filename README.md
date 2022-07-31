@@ -28,10 +28,10 @@ Use [backtest Jupyter Notebook](hackatom_2022/analyse.ipynb).
 
 ## Team
 
-Mikko Ohtamaa
-Mike Purvis
-Teddy Knox
-Mykhailo Donchenko
+- Mikko Ohtamaa
+- Mike Purvis
+- Teddy Knox
+- Mykhailo Donchenko
 
 ## Hackathon story
 
@@ -52,18 +52,25 @@ We believe all of us learned some valuable information about installing beaker o
 
 Since our goal was to eventually do a swap from a smart contract, we looked into how to create our own custom tokens and create a pool on Osmosis. This took to an interesting turn, eventually leading to great conversations with the Osmosis core team about an issue with the `tokenfactory`. Shoutout to all the folks who helped, especially Dan Lynch, who eventually created this issue [detailing the problem](https://github.com/osmosis-labs/osmosis/issues/2259). This was actually quite a fascinating deep dive into protobufs and amino signing, and well worth the detour.
 
+<img src="./assets/tokenfactory-amino.png" width="600" />
+
 In our efforts to try out the Osmosis bindings, we used an example from a custom branch recommended to us by Xiangan He:
 https://github.com/osmosis-labs/cw-tpl-osmosis/blob/xiangan/example/src/contract.rs
 
-This gave us enough knowledge to discover the `Swap` [functionality here](https://docs.rs/osmo-bindings/0.5.1/osmo_bindings/struct.Swap.html). (Note that for this project, we copied the version `0.6.0` instead of the published crate which looked a bit older.)
+This gave us enough knowledge to discover the `Swap` [functionality here](https://docs.rs/osmo-bindings/0.5.1/osmo_bindings/struct.Swap.html).
+
+<img src="./assets/osmo-bindings-swap.png" width="600" />
+
+(Note that for this project, we copied the version `0.6.0` instead of the published crate which looked a bit older.)
 
 While we weren't able to wrap up the swap functionality, we have a head start in this pull request:
 https://github.com/mikedotexe/hackatom-2022-osmosis-algorithmic-trading-solution/tree/add-basic-osmo-bindings
 
+<img src="./assets/begin-osmo-bindings.png" width="600" />
+
 We were hoping to be able to create a pool on testnet, but at the 11th hour found a small inconsistency where beaker **had** access to `create-pool` but couldn't seem to point to testnet, and telescope **didn't** have knowledge about the "createPool" Message type for Osmosis yet.
 
-<img src="./assets/begin-osmo-bindings.png" width="600" />
 <img src="./assets/osmo-bindings.png" width="600" />
 <img src="./assets/osmo-bindings2.png" width="600" />
-<img src="./assets/osmo-bindings-swap.png" width="600" />
-<img src="./assets/tokenfactory-amino.png" width="600" />
+
+
