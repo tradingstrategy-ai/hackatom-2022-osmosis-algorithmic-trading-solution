@@ -105,9 +105,9 @@ const Home: NextPage = () => {
               <h2>Technology</h2>
 
               <ul>
-                  <li>Osmosis integration - create trading strategies for all Osmosis pools</li>
+                  <li>Osmosis integration: create trading strategies for all Osmosis pools</li>
                   <li>CosmWasm based vault smart contract</li>
-                  <li>Swap indexer on TheGraph Osmosis</li>
+                  <li>Market data indexer using TheGraph</li>
                   <li>A strategy engine and oracle by Trading Strategy</li>
                   <li>Integration with Keplr wallet with quality user experience</li>
               </ul>

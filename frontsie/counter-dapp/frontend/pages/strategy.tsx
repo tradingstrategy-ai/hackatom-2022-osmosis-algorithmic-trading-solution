@@ -362,7 +362,7 @@ const Strategy: NextPage = () => {
 
               <p>Strategy performance benchmarked agaisnt buy-and-hold ATOM and buy-and-hold OSMO.</p>
 
-              <Image src="/benchmark.png" width={960} height={800}  />
+              <img src="/benchmark.png" alt=""/>
 
           </div>
 
