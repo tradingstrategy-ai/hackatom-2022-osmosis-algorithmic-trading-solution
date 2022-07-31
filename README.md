@@ -18,7 +18,9 @@ and offchain trading algorithm oracles.
 - [CosmWasm smart contracts](./frontsie/counter-dapp/contracts)
 - [Beaker based frontend](./frontsie/counter-dapp/frontend)
 
-# Collect historical price data
+## How to run this demo
+
+### Collect historical price data
 
 Obtain raw Osmosis swap events using [subgraph](https://github.com/miohtama/hackatom-2022)
 
@@ -29,14 +31,30 @@ python hackatom_2022/store_price.py
 
 This will generate 600 MB `swaps.csv`.
 
-# Create and examine OHLCV candle data
+### Create and examine OHLCV candle data
 
 Use [OHLCV Jupyter Notebook](hackatom_2022/analyse.ipynb).
 
-# Run backtests 
+### Run backtests 
 
 Use [backtest Jupyter Notebook](hackatom_2022/analyse.ipynb).
 
+### Deploy contracts
+
+Use [Beaker](frontsie/counter-dapp).
+
+### Run frontend locally
+
+Use [Vercel](frontsie/counter-dapp).
+
+```shell
+cd frontsie/counter-dapp/frontend
+yarn dev
+```
+
 # Team
 
-TODO
+- [Mikko Ohtamaa](twitter.com/moo9000/)
+- [Mike Purvis](https://twitter.com/mikedotexe)
+- Teddy Knox
+- Mykhailo Donchenko
