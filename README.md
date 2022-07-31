@@ -73,4 +73,6 @@ We were hoping to be able to create a pool on testnet, but at the 11th hour foun
 <img src="./assets/osmo-bindings.png" width="600" />
 <img src="./assets/osmo-bindings2.png" width="600" />
 
+All in all, we learned a ton about the ecosystem and feel like we've all got a handle on the tooling and possibilities.
 
+Thank you, HackAtom Seoul 2022!
