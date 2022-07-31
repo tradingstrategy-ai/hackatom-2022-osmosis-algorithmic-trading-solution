@@ -68,7 +68,7 @@ https://github.com/mikedotexe/hackatom-2022-osmosis-algorithmic-trading-solution
 
 <img src="./assets/begin-osmo-bindings.png" width="600" />
 
-We were hoping to be able to create a pool on testnet, but at the 11th hour found a small inconsistency where beaker **had** access to `create-pool` but couldn't seem to point to testnet, and telescope **didn't** have knowledge about the "createPool" Message type for Osmosis yet.
+We were hoping to be able to create a pool on testnet, but at the 11th hour found a small inconsistency where beaker **had** access to `create-pool` but couldn't seem to point to testnet (11.5th hour errata, yes you can!), and telescope **didn't** have knowledge about the "createPool" Message type for Osmosis yet.
 
 <img src="./assets/osmo-bindings.png" width="600" />
 <img src="./assets/osmo-bindings2.png" width="600" />
