@@ -4,23 +4,24 @@
   <h1 align="center">Algosm</h1>
 </p>
 
+https://algosm.zone
 
 Algosm is a hackathon project for HackAtom Seoul 2022. Algosm enables
-developing non-custodial active trading strategies on Osmosis DEX using CosmWasm smart contract
+developing noncustodial active trading strategies on Osmosis DEX using CosmWasm smart contract
 and [Trading Strategy offchain oracles](https://tradingstrategy.ai/docs/). 
-Users deposit to Algosm vault smart contracts which trade on Osmosmis, by buying low and selling high based
+Users deposit to Algosm vault smart contracts which trade on Osmosis, by buying low and selling high based
 on technical analysis and trading algorithms written in Python.
 
 Typical active trading strategies may include strategies like mean reversion,
 momentum and trend following. Active trading provides more sustainable
-yield than liquidity mining, as it is based on true profits. Furthermore
+yield than liquidity mining, as it is based on true profits. Furthermore,
 active trading generates trading fees for Osmosis.
 
 ## Architecture
 
-![Architecture](./architecture.svg)
+![Architecture](./architecture.png)
 
-## Quick walkthrough
+## Quick walk through
 
 Below is a quick walk through of deliverables of this hackathon:
 
@@ -110,10 +111,7 @@ https://github.com/mikedotexe/hackatom-2022-osmosis-algorithmic-trading-solution
 
 <img src="./assets/begin-osmo-bindings.png" width="600" />
 
-We were hoping to be able to create a pool on testnet, but at the 11th hour found a small inconsistency where beaker **had** access to `create-pool` but couldn't seem to point to testnet (11.5th hour errata, yes you can!), and telescope **didn't** have knowledge about the "createPool" Message type for Osmosis yet.
-
-<img src="./assets/osmo-bindings.png" width="600" />
-<img src="./assets/osmo-bindings2.png" width="600" />
+We were not able to get the swap complete by the time the hackathon ended.
 
 All in all, we learned a ton about the ecosystem and feel like we've all got a handle on the tooling and possibilities.
 
