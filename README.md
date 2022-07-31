@@ -6,22 +6,30 @@
 
 
 Algosm is a hackathon project for HackAtom Seoul 2022. Algosm enables
-non-custodial active trading strategies on Osmosis DEX using CosmWasm smart contract
-and offchain trading algorithm oracles. Users can deposit to Algosm
-vaults that trade on Osmosmis, by buying low and selling high based
+developing non-custodial active trading strategies on Osmosis DEX using CosmWasm smart contract
+and [Trading Strategy offchain oracles](https://tradingstrategy.ai/docs/). 
+Users deposit to Algosm vault smart contracts which trade on Osmosmis, by buying low and selling high based
 on technical analysis and trading algorithms written in Python.
+
+Typical active trading strategies may include strategies like mean reversion,
+momentum and trend following. Active trading provides more sustainable
+yield than liquidity mining, as it is based on true profits. Furthermore
+active trading generates trading fees for Osmosis.
 
 ## Architecture
 
 ![Architecture](./architecture.svg)
 
-## Contents 
+## Quick walkthrough
 
-- Create ATOM/OSMO price candles in [analyse.ipynb](hackatom_2022/analyse.ipynb) and save as Parquet
+Below is a quick walk through of deliverables of this hackathon:
+
+- Create one simple example strategy that trades on Osmosis
 - Read all Osmosis token swaps using hosted TheGraph API in [store_price.py](hackatom_2022/store_price.py) to CSV
-- [Deployed Subgraph](https://thegraph.com/hosted-service/subgraph/miohtama/hackatom-2022)
-- [Subgraph source code](https://github.com/miohtama/hackatom-2022)
-- [CosmWasm smart contracts](./frontsie/counter-dapp/contracts)
+  - [Deployed Subgraph](https://thegraph.com/hosted-service/subgraph/miohtama/hackatom-2022)
+  - [Subgraph source code](https://github.com/miohtama/hackatom-2022)
+- ATOM/OSMO OHLCV candle processing in [analyse.ipynb](hackatom_2022/analyse.ipynb), saved as Parquet
+- [CosmWasm vault smart contracts for deposits](./frontsie/counter-dapp/contracts)
 - [Beaker based frontend](./frontsie/counter-dapp/frontend)
 
 ## How to run this demo
@@ -42,6 +50,8 @@ This will generate 600 MB `swaps.csv`.
 Use [OHLCV Jupyter Notebook](hackatom_2022/analyse.ipynb).
 
 ### Run backtests 
+
+See example ALGO/OSMO mean reversion algorithm in the backtesting notebook.
 
 Use [backtest Jupyter Notebook](hackatom_2022/analyse.ipynb).
 
