@@ -29,6 +29,7 @@ Below is a quick walk through of deliverables of this hackathon:
   - [Deployed Subgraph](https://thegraph.com/hosted-service/subgraph/miohtama/hackatom-2022)
   - [Subgraph source code](https://github.com/miohtama/hackatom-2022)
 - ATOM/OSMO OHLCV candle processing in [analyse.ipynb](hackatom_2022/analyse.ipynb), saved as Parquet
+- [Develop and backtest trading strategy based on mean reversion using fast and slow exponential moving average technical indicators](https://tradingstrategy.ai/docs/programming/strategy-examples/osmosis.html)
 - [CosmWasm vault smart contracts for deposits](./frontsie/counter-dapp/contracts)
 - [Beaker based frontend](./frontsie/counter-dapp/frontend)
 
@@ -57,7 +58,7 @@ Processed candle chart data feed:
 
 See example ALGO/OSMO mean reversion algorithm in the backtesting notebook.
 
-Use [backtest Jupyter Notebook](hackatom_2022/analyse.ipynb).
+Use [backtest Jupyter Notebook](https://tradingstrategy.ai/docs/programming/strategy-examples/osmosis.html).
 
 Example fast EMA/slow EMA technical indicators on ATOM/OSMO price chart:
 
