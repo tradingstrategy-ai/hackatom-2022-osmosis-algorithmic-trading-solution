@@ -353,7 +353,7 @@ const Strategy: NextPage = () => {
 
               <h3>Portfolio benchmark</h3>
 
-              <p>Strategy performance benchmarked agaisnt buy-and-hold ATOM and buy-and-hold OSMO.</p>
+              <p>Strategy performance benchmarked against buy-and-hold ATOM and buy-and-hold OSMO.</p>
 
               <img src="/benchmark.png" alt=""/>
 
