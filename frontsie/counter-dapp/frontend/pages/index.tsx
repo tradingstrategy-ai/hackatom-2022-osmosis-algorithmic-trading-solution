@@ -47,10 +47,12 @@ const Home: NextPage = () => {
               </div>
 
               <div className="right">
+                  {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
                   <a className="btn" href="/strategy">
                       Invest
                   </a>
 
+                  {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
                   <a className="btn" href="/strategy">
                       Performance
                   </a>
