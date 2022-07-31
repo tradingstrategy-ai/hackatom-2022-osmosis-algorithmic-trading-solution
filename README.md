@@ -4,7 +4,7 @@
   <h1 align="center">Algosm</h1>
 </p>
 
-https://algosm.zone
+[Visit Osmosis testnet demo at algosm.zone](https://algosm.zone)
 
 Algosm is a hackathon project for HackAtom Seoul 2022. Algosm enables
 developing noncustodial active trading strategies on Osmosis DEX using CosmWasm smart contract
@@ -36,6 +36,7 @@ Delivered:
 - [Backtested trading strategy based on mean reversion using fast and slow exponential moving average technical indicators](https://tradingstrategy.ai/docs/programming/strategy-examples/osmosis.html)
 - [CosmWasm vault smart contracts for deposits](./frontsie/counter-dapp/contracts)
 - [Beaker based frontend](./frontsie/counter-dapp/frontend)
+- [Visit Osmosis testnet demo at algosm.zone](https://algosm.zone)
 
 ## How to run this demo
 
