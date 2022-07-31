@@ -22,14 +22,17 @@ active trading generates trading fees for Osmosis.
 
 ## Quick walkthrough
 
-Below is a quick walk through of deliverables of this hackathon:
+Below is a quick walk through of deliverables of this hackathon.
 
-- Create one simple example strategy that trades on Osmosis
-- Read all Osmosis token swaps using hosted TheGraph API in [store_price.py](hackatom_2022/store_price.py) to CSV
+Goal: Create one simple example strategy that trades on Osmosis.
+
+Delivered:
+
+- Osmosis token swaps subgraph using hosted TheGraph API in [store_price.py](hackatom_2022/store_price.py) to CSV
   - [Deployed Subgraph](https://thegraph.com/hosted-service/subgraph/miohtama/hackatom-2022)
   - [Subgraph source code](https://github.com/miohtama/hackatom-2022)
 - ATOM/OSMO OHLCV candle processing in [analyse.ipynb](hackatom_2022/analyse.ipynb), saved as Parquet
-- [Develop and backtest trading strategy based on mean reversion using fast and slow exponential moving average technical indicators](https://tradingstrategy.ai/docs/programming/strategy-examples/osmosis.html)
+- [Backtested trading strategy based on mean reversion using fast and slow exponential moving average technical indicators](https://tradingstrategy.ai/docs/programming/strategy-examples/osmosis.html)
 - [CosmWasm vault smart contracts for deposits](./frontsie/counter-dapp/contracts)
 - [Beaker based frontend](./frontsie/counter-dapp/frontend)
 
