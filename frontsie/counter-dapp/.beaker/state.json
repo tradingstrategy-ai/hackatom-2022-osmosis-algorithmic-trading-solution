@@ -1,1 +1,13 @@
-{}
+{
+  "testnet": {
+    "counter": {
+      "code_id": 597,
+      "addresses": {
+        "default": "osmo1ejuu95wkenewwpq3hqf4dd8furz9q6xtenhknxdl3f3rc9qtx52sspnx8a"
+      },
+      "proposal": {
+        "store_code": null
+      }
+    }
+  }
+}
