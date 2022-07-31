@@ -6,8 +6,8 @@ import { useCount } from "../api/counter";
 import styles from "../styles/Home.module.css";
 import {deposit, getWalletStatus} from "../api/strategy";
 import Image from "next/image";
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+// import SyntaxHighlighter from 'react-syntax-highlighter';
+// import { tomorrowNightBlue } from 'react-syntax-highlighter/dist/esm/styles/hljs';
  //import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 // https://blog.bitsrc.io/using-non-ssr-friendly-components-with-next-js-916f38e8992c
@@ -187,6 +187,7 @@ const Strategy: NextPage = () => {
 
         setInvestResult("");
 
+        // @ts-ignore
         let val = inputRef.current.value;
         if(!val) {
             setInvestError("Enter OSMO amount to invest");
@@ -204,20 +205,17 @@ const Strategy: NextPage = () => {
             }
         } catch(e) {
             console.error(e);
+            // @ts-ignore
             setInvestError(e.toString());
         }
 
         updateUI();
 
+        // @ts-ignore
         inputRef.current.value = "";
 
         setBusy(false);
     }
-
-      const handleChange = event => {
-        setMessage(event.target.value);
-        console.log('value is:', event.target.value);
-      };
 
   return (
     <div className={styles.container}>
@@ -275,7 +273,7 @@ const Strategy: NextPage = () => {
                       Wallet balance: <span className="value">{connected ? currentWalletBalance : "-"}</span>
                   </p>
 
-                  {!connected && <p class="connect-info">
+                  {!connected && <p className="connect-info">
                       Connect your Keplr wallet to invest and display current profit.
                   </p>}
 
