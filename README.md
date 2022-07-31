@@ -49,11 +49,19 @@ This will generate 600 MB `swaps.csv`.
 
 Use [Osmosis market data feed generation Jupyter Notebook](hackatom_2022/analyse.ipynb).
 
+Processed candle chart data feed:
+
+![candles](./candles.png)
+
 ### Run backtests 
 
 See example ALGO/OSMO mean reversion algorithm in the backtesting notebook.
 
 Use [backtest Jupyter Notebook](hackatom_2022/analyse.ipynb).
+
+Example fast EMA/slow EMA technical indicators on ATOM/OSMO price chart:
+
+![trading signals](./trading-signals.png)
 
 ### Deploy contracts
 
