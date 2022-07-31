@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img width=100 height=100 src="./algosm-logo.png">
+  <img width=100 height=100 src="./algosm-logo-black.png">
   <h1 align="center">Algosm</h1>
 </p>
 
