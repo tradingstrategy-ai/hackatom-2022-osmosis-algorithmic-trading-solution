@@ -5,9 +5,15 @@
 </p>
 
 
-Algosm is a hackathon project for HackAtom Seoul 2022. Algosm does
+Algosm is a hackathon project for HackAtom Seoul 2022. Algosm enables
 non-custodial active trading strategies on Osmosis DEX using CosmWasm smart contract
-and offchain trading algorithm oracles.
+and offchain trading algorithm oracles. Users can deposit to Algosm
+vaults that trade on Osmosmis, by buying low and selling high based
+on technical analysis and trading algorithms written in Python.
+
+## Architecture
+
+
 
 ## Contents 
 
